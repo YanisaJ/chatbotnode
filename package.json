@@ -1,0 +1,27 @@
+{
+  "name": "modloansbot",
+  "version": "1.0.0",
+  "description": "bot for loan",
+  "main": "index.js",
+  "engines":{
+    "node": "14.17.1",
+    "npm": "7.19.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "backend" : "nodemon index.js"
+  },
+  "keywords": [
+    "Chatbot",
+    "for",
+    "loan"
+  ],
+  "author": "Yanisa W.",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}
