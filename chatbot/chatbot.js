@@ -33,6 +33,51 @@ module.exports = {
         let responses = await sessionClient.detectIntent(request);
         return responses;
     },
+    //04/07/64---------------------------------------------------------------------------------
+    createBooking: async function (text, parameters) {
+        // The text query request
+        const request = {
+            session: sessionPath,
+            queryInput: {
+                text: {
+                    // The query to send to the dialogflow agent ข้อความที่ client ขอไปยัง bodyparser
+                    text: text,
+                    // ภาษาที่ใช้
+                    languageCode: config.languageCode,
+                },
+            },
+            queryParams: {
+                payload: {
+                    data: parameters
+                }
+            },
+        };
+        // Send request and log result/detectIntent จะดูว่าเรา requeset อะไร แล้วจะตอบกลับมาตามเงื่อนไข intent นั้น
+        let responses = await sessionClient.detectIntent(request);
+        return responses;
+    },
+    createCalendarEvent: async function (text, parameters) {
+        // The text query request
+        const request = {
+            session: sessionPath,
+            queryInput: {
+                text: {
+                    // The query to send to the dialogflow agent ข้อความที่ client ขอไปยัง bodyparser
+                    text: text,
+                    // ภาษาที่ใช้
+                    languageCode: config.languageCode,
+                },
+            },
+            queryParams: {
+                payload: {
+                    data: parameters
+                }
+            },
+        };
+        // Send request and log result/detectIntent จะดูว่าเรา requeset อะไร แล้วจะตอบกลับมาตามเงื่อนไข intent นั้น
+        let responses = await sessionClient.detectIntent(request);
+        return responses;
+    },
 };
 
 // console.log('Detected intent');

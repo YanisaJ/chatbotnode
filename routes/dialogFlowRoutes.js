@@ -4,7 +4,7 @@ const contactBooking = require('../chatbot/contactBooking');
 module.exports = (app) => {
   //HTTP Methods-----------------------------------------------------
   app.get('/', (req, res) => {
-    res.send('Hello new project again');
+    res.send('Hello new project again "It is still okay right now at 7/4/64"');
   });
 
   app.post('/api/mabot_text_query', async(req, res) => {
