@@ -1,16 +1,3 @@
-//Using DialogFlow-------------------------------------------------//---14/7/64
-'use strict';
-const dialogflow = require('dialogflow');
-const uuid = require('uuid');
-const config = require('../config/keys');
-//Using DialogFlow-------------------------------------------------
-
-// A unique identifier for the given session
-const sessionId = uuid.v4();
-// new session
-const sessionClient = new dialogflow.SessionsClient();
-const sessionPath = sessionClient.sessionPath(config.projectId, sessionId);
-//---14/7/64
 
 module.exports = {
     sendMail: async function () {
