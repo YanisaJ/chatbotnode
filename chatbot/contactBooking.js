@@ -83,6 +83,11 @@
 //         intentMap.set('contactBooking', createBooking);
 //         intentMap.set('contactBooking', getContact);
 //         agent.handleRequest(intentMap);
+//         //intentMap 2
+//         let intentMap = new Map();
+//         intentMap.set('contactBooking',contactBooking);
+
+        
     
 //     //});
 //     }
