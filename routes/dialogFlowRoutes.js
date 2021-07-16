@@ -5,7 +5,7 @@ const chatbot = require('../chatbot/chatbot');
 module.exports = (app) => {
   //HTTP Methods-----------------------------------------------------
   app.get('/', (req, res) => {
-    res.send('Hello new project again "Its turn to ERROR!!!!!!! right now at 15/7/64"');
+    res.send('Hello new project again "worked on 16/7/64"');
   });
 
   app.post('/api/mabot_text_query', async(req, res) => {
