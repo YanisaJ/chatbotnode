@@ -1,5 +1,5 @@
 const chatbot = require('../chatbot/chatbot');
-const sendMail = require('../chatbot/sendMail');
+//const sendMail = require('../chatbot/sendMail');
 //const contactBooking = require('../chatbot/contactBooking');
 
 module.exports = (app) => {
@@ -8,19 +8,33 @@ module.exports = (app) => {
     res.send('Hello my fk project again "worked on 16/7/64"');
   });
 
-  //16/4/64
+  //16/4/64 Home route
+  // app.post('/webhook', (req, res) => {
+  //   console.log(JSON.stringify(req.body, 2, ' '));
+    
+  //   res.send({
+  //     fulfillmentText: 'Hello from my coding. :)'
+  //   });
+  // });
+
+  // app.post('/webhook', async(req, res) => {
+  //   let responses = await console.log(chatbot.textQuery(req.body.text, req.body.parameters));
+  //   res.send(responses[0].queryResult);
+  // });
+  
   app.post('/webhook', async(req, res) => {
-    // let fulfillmentText = await 
-    console.log(JSON.stringify(req.body, 2, ''));
-    res.send({
-      fulfillmentText: 'Hello from my coding. :)'
-    });
+    let responses = await chatbot.textQuery(req.body.text, req.body.parameters, ' ');
+    res.send(responses[0].queryResult);
   });
   
-  app.post('/api/mabot_text_query', async(req, res) => {
-    let responses = await chatbot.textQuery(req.body.text, req.body.parameters);
-    res.send(responses[0].queryResult)
-  });
+  // app.post('/webhook', async(req, res) => {
+  //   let responses = await console.log(chatbot.textQuery(req.body.text, req.body.parameters, ' '));
+  //   res.send(responses[0].queryResult);
+  // });
+  // app.post('/api/mabot_text_query', async(req, res) => {
+  //   let responses = await chatbot.textQuery(req.body.text, req.body.parameters);
+  //   res.send(responses[0].queryResult)
+  // });
   
   // 14/7/64 --sendMail
   app.post('/api/mabot_send_mail', async(req, res) => {

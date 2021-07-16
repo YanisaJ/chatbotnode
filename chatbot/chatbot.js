@@ -82,6 +82,7 @@ module.exports = {
     // },
 };
 
+//ไม่ใช้
 // console.log('Detected intent');
 // const result = responses[0].queryResult;
 // console.log(`Query: ${result.queryText}`);
