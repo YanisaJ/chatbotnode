@@ -5,13 +5,23 @@ const sendMail = require('../chatbot/sendMail');
 module.exports = (app) => {
   //HTTP Methods-----------------------------------------------------
   app.get('/', (req, res) => {
-    res.send('Hello new project again "worked on 16/7/64"');
+    res.send('Hello my fk project again "worked on 16/7/64"');
   });
 
+  //16/4/64
+  app.post('/webhook', async(req, res) => {
+    // let fulfillmentText = await 
+    console.log(JSON.stringify(req.body, 2, ''));
+    res.send({
+      fulfillmentText: 'Hello from my coding. :)'
+    });
+  });
+  
   app.post('/api/mabot_text_query', async(req, res) => {
     let responses = await chatbot.textQuery(req.body.text, req.body.parameters);
     res.send(responses[0].queryResult)
   });
+  
   // 14/7/64 --sendMail
   app.post('/api/mabot_send_mail', async(req, res) => {
     let responses = await sendMail.sendMail(req.body.text, req.body.parameters);
@@ -28,6 +38,7 @@ module.exports = (app) => {
   //   res.send(responses[0].queryResult)
   // });
   //04/07/64-----------------------------------------------------
+
   app.post('/api/mabot_event_query', (req, res) => {
     res.send('Event query')
   });
