@@ -1,5 +1,5 @@
 const chatbot = require('../chatbot/chatbot');
-//const sendMail = require('../chatbot/sendMail');
+const sendMail = require('../chatbot/sendMail');
 //const contactBooking = require('../chatbot/contactBooking');
 
 module.exports = (app) => {
@@ -12,11 +12,11 @@ module.exports = (app) => {
     let responses = await chatbot.textQuery(req.body.text, req.body.parameters);
     res.send(responses[0].queryResult)
   });
-  //14/7/64 --sendMail
-  // app.post('/api/mabot_send_mail', async(req, res) => {
-  //   let responses = await sendMail(req.body.text, req.body.parameters);
-  //   res.send(responses[0].queryResult)
-  // });
+  // 14/7/64 --sendMail
+  app.post('/api/mabot_send_mail', async(req, res) => {
+    let responses = await sendMail.sendMail(req.body.text, req.body.parameters);
+    res.send(responses[0].queryResult)
+  });
 
   //04/07/64-----------------------------------------------------  
   // app.post('/api/mabot_create_Booking', async(req, res) => {
