@@ -1,3 +1,5 @@
+module.exports = (booking) =>  {
+// booking.post('/booking', async (req, res) => {
 // const google = require('../API/ggCalendar');
 var { google } = require("googleapis");
 
@@ -28,7 +30,6 @@ process.env.DEBUG = 'dialogflow:*';
 const timeZone = 'Indochina/Bangkok';
 const timeZoneOffset = '+7:00';
 
-module.exports = (app) => {
     {
         const agent = new WebhookClient({ request, response });
         console.log("Parameters", agent.parameters);
@@ -111,4 +112,5 @@ module.exports = (app) => {
             });
         });
     }
-}
+// });
+};

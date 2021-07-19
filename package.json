@@ -4,8 +4,8 @@
   "description": "bot for loan",
   "main": "index.js",
   "engines": {
-    "node": "14.17.1",
-    "npm": "7.19.0"
+    "node": "14.16.1",
+    "npm": "7.15.0"
   },
   "scripts": {
     "start": "node index.js",
@@ -19,9 +19,15 @@
   "author": "Yanisa W.",
   "license": "ISC",
   "dependencies": {
+    "@googleapis/docs": "^0.2.0",
+    "actions-on-google": "^2.14.0",
     "body-parser": "^1.19.0",
     "dialogflow": "^1.2.0",
+    "dialogflow-fulfillment": "^0.6.1",
     "express": "^4.17.1",
+    "google": "^2.1.0",
+    "google-auth-library": "^5.10.1",
+    "googleapis": "^39.2.0",
     "nodemailer": "^6.6.3",
     "uuid": "^8.3.2"
   },

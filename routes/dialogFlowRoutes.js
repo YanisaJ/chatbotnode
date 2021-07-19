@@ -1,58 +1,101 @@
-const chatbot = require('../chatbot/chatbot');
-//const sendMail = require('../chatbot/sendMail');
-//const contactBooking = require('../chatbot/contactBooking');
+//const chatbot = require('../chatbot/chatbot');
+
+const { express } = require('actions-on-google/dist/framework/express');
 
 module.exports = (app) => {
-  //HTTP Methods-----------------------------------------------------
+  //HTTP Methods
   app.get('/', (req, res) => {
-    res.send('Hello my fk project again "worked on 17/7/64"');
+    res.send('Hello thesis again "now working on 20/7/64 04.40 am"');
   });
 
-  //16/4/64 Home route
-  app.post('/', (req, res) => {
-    console.log(JSON.stringify(req.body, 2, ' '));
-    
-    res.send({
-      fulfillmentText: 'Hello from my coding. :)'
-    });
+  //Home route Webhook connection
+  app.post('/', async (req, res) => {
+    console.log(req.body, 2, ' ');
+    const resname = req.body.queryResult.intent.name.split("/");
+    const intentID = resname[resname.length - 1];
+
+    switch (intentID) {
+      //test
+      case '4723c3a7-3944-4f87-98a3-f729ad1860e5':
+        res.send({
+          fulfillmentText: 'ABC test: connected'
+        });
+        break;
+
+      //default
+      //fallback intent
+      case 'eca6c71b-311e-4c7a-971a-7145cf50e36a':
+        res.send();
+        break;
+
+      //Intent on my project
+      //Location
+      case '62e06ac5-9a6a-49df-9214-1867581a2d0d':
+        res.send();
+        break;
+
+      //contactBooking
+      case '42b2a223-daa2-4493-a13c-3a61723710ab':
+        const booking = express();
+        booking.use(bodyParser.json());
+
+        require('../chatbot/contactBooking.js')(booking);
+        res.send();
+        break;
+      //contactBooking-yes
+        case '6d5ea1b3-a651-4785-81d5-7f8a99268e29':
+          res.send();
+          break;
+      //contactBooking-no
+        case 'eca6c71b-311e-4c7a-971a-7145cf50e36a':
+          res.send();
+          break;
+
+      //sendMail
+      case '30618794-147e-4f1c-9812-af06b02f674b':
+        res.send();
+        break;
+      //sendMail-yes
+        case '51f862b9-3352-4966-adba-103bac0782d2':
+          res.send();
+          break;
+      //sendMail-no
+        case 'ce9c4541-448b-4aa2-bfbb-e53c3b467aea':
+          res.send();
+          break;
+      
+
+      default://test
+        res.send({
+          fulfillmentText: 'Webhook test => default'
+        });
+    }
   });
 
-  // app.post('/webhook', async(req, res) => {
-  //   let responses = await chatbot.textQuery(req.body.text, req.body.parameters);
-  //     res.send({
-  //     fulfillmentText: [responses[0].queryResult]
-  //   });
-  // });
-  
-
-  app.post('/api/mabot_text_query', async(req, res) => {
-    let responses = await chatbot.textQuery(req.body.text, req.body.parameters);
-    res.send(responses[0].queryResult)
-  });
-  
-  // 14/7/64 --sendMail
-  app.post('/api/mabot_send_mail', async(req, res) => {
-    let responses = await sendMail.sendMail(req.body.text, req.body.parameters);
-    res.send(responses[0].queryResult)
-  });
-
-  //04/07/64-----------------------------------------------------  
-  // app.post('/api/mabot_create_Booking', async(req, res) => {
-  //   let responses = await chatbot.createBooking(req.body.text, req.body.parameters);
-  //   res.send(responses[0].queryResult)
-  // });
-  // app.post('/api/mabot_create_Calendar_Event', async(req, res) => {
-  //   let responses = await chatbot.createCalendarEvent(req.body.text, req.body.parameters);
-  //   res.send(responses[0].queryResult)
-  // });
-  //04/07/64-----------------------------------------------------
-
-  app.post('/api/mabot_event_query', (req, res) => {
+  app.post('/eventQuery', (req, res) => {
     res.send('Event query')
   });
 
   // app.put();
   // app.delete();
+
+  //contactBook
+  // function createBooking(agent) {
+        //   return agent.read('contactBooking.js');
+        // }
+        // function createCalendarEvent(agent) {
+        //   return agent.read('contactBooking.js');
+        // }
+        // let intentMap = new Map();
+        // intentMap.set('contactBooking', createBooking);
+        // intentMap.set('contactBooking', createCalendarEvent);
+        // agent.handleRequest(intentMap);
+
+  // //text query
+  // app.post('/textQuery', async (req, res) => {
+  //   let responses = await chatbot.textQuery(req.body.text, req.body.parameters);
+  //   res.send(responses[0].queryResult)
+  // });
 
   //HTTP Methods-----------------------------------------------------
 };
