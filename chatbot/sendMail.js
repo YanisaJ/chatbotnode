@@ -3,8 +3,8 @@ module.exports = (sMail) => {
         res.send('Hello bot "now working on sendMail"');
     });
 
-    sMail.post('/sendMail', async (req, res) => (function sendMail(phonenumber,name,email,mailTitle,mailDetail) {
-        const phonenumber = agent.parameter.phonenumber;
+    sMail.post('/sendMail', async (req, res) => (function sendMail(phone_number,name,email,mailTitle,mailDetail) {
+        const phone_number = agent.parameter.phone_number;
         const name = agent.parameter.name;
         const email = agent.parameter.email;
         const mailTitle = agent.parameter.mailTitle;
@@ -28,7 +28,7 @@ module.exports = (sMail) => {
             to: 'mods.loan.assistant@gmail.com',
             subject: 'test Sendmail',
             // text: 'testing success',
-            html: "<p> Name: </p>" + name + "<p> Email: </p>" + email + "<p> Phone Number: </p>" + phonenumber
+            html: "<p> Name: </p>" + name + "<p> Email: </p>" + email + "<p> Phone Number: </p>" + phone_number
                 + "<p> Title: </p>" + mailTitle + "<p> Description: </p>" + mailDetail
         };
 

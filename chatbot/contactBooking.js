@@ -1,13 +1,6 @@
-module.exports = (booking) =>  {
-booking.get('/bb', (req, res) => {
-    res.send('Hello bot "now working on contactBooking"');
-});
-
-booking.post('/booking', async (req, res) => {
-
-    var { google } = require("googleapis");
-
+var { google } = require("googleapis");
 const calendarId = require('../config/keys');
+
 const serviceAccount = {
     type: "service_account",
     project_id: "mod-sloanassistantbot-9dsw",
@@ -34,87 +27,92 @@ process.env.DEBUG = 'dialogflow:*';
 const timeZone = 'Indochina/Bangkok';
 const timeZoneOffset = '+7:00';
 
-    {
-        const agent = new WebhookClient({ request, response });
-        console.log("Parameters", agent.parameters);
+// booking.get('/bb', (req, res) => {
+//     res.send('Hello bot "now working on contactBooking"');
+// });
+//booking.post('/booking', async (req, res) => {
 
-        //Change the parameters to your entity names
-        function createBooking(agent) {
-            const time = new Date(Date.parse(agent.parameters.date.split('T')[0] + 'T' + agent.parameters.time.split('T')[1].split('-')[0] + timeZoneOffset));
-            const dateTimeEnd = new Date(new Date(time).setHours(time.getHours() + 1));
-            const date = new Date(agent.parameters.date);
-            const bookingDate = new Date(date);
-            const bookname = agent.parameters.name;
-            const studentID = agent.parameters.studentID;
-            const bookphonenumber = agent.parameters.phonenumber;
-            const bookemail = agent.parameters.email;
-            var phone = phonenumber.toString().length;
-            var stdID = studentID.toString().length;
+const agent = new WebhookClient({ request, response });
+console.log("Parameters", agent.parameters);
 
-            const now = new Date();
-            const appointmentTimeString = time.toLocaleString(
-                'en-US',
-                { month: 'long', day: 'numeric', hour: 'numeric', timeZone: 'Indochina/Bangkok' }
-            );
+module.exports = () => {
+    //Change the parameters to your entity names
+    function createBooking(agent) {
+        const time = new Date(Date.parse(agent.parameters.date.split('T')[0] + 'T' + agent.parameters.time.split('T')[1].split('-')[0] + timeZoneOffset));
+        const dateTimeEnd = new Date(new Date(time).setHours(time.getHours() + 1));
+        const date = new Date(agent.parameters.date);
+        const bookingDate = new Date(date);
+        const bookname = agent.parameters.name;
+        const studentID = agent.parameters.studentID;
+        const bookphonenumber = agent.parameters.phonenumber;
+        const bookemail = agent.parameters.email;
+        var phone = phonenumber.toString().length;
+        var stdID = studentID.toString().length;
 
-            if (time < now) {
-                agent.add(`ไม่สามารถเข้าพบเวลาที่ระบุได้นะครับ กรุณาทำรายการใหม่ตรับ`);
-            } else if (date < now) {
-                agent.add(`ไม่สามารถเข้าพบวันที่ระบุได้นะครับ กรุณาทำรายการใหม่ครับ`);
-            }
-            else if (bookingDate.getFullYear() > now.getFullYear()) {
-                agent.add(`ไม่สามารถนัดพบเวลา${bookingDate.getFullYear()}ได้ครับ โปรดระบุเวลาอีกครังครับ${now.getFullYear()}`);
-            }
-            else if (phone != 10) {
-                agent.add(`โปรดระบุหมายเลขโทรศัพท์ให้ครบทั้งสิบหลักด้วยครับ`);
-            } else if (stdID != 11) {
-                agent.add(`โปรดระบุรหัสนักศึกษาให้ครบทั้งสิบเอ็ดหลักด้วยครับ`);
-            }
+        const now = new Date();
+        const appointmentTimeString = time.toLocaleString(
+            'en-US',
+            { month: 'long', day: 'numeric', hour: 'numeric', timeZone: 'Indochina/Bangkok' }
+        );
 
-            else {
-                // Check the availibility of the time, and make an appointment if there is time on the calendar
-                return createCalendarEvent(time, dateTimeEnd, bookingDate, bookname, studentID, bookphonenumber, bookemail).then(() => {
-                    agent.add(`การนัดหมายเสร็จสิ้น ขอให้ ${bookname} เข้าพบ ${appointmentTimeString} ที่ห้องกองทุน @ตึก14ชั้น:6A ตามที่นัดหมายไว้ \n`, `หากมีข้อเปลี่ยนแปลงประการใดทางเราจะติดต่อกลับไปนะครับผม`);
-                }).catch(() => {
-                    agent.add(`ขออภัยในความไม่สะดวกนะครับ ไม่สามารถทำการนัดหมายได้ โปรดทำรายการใหม่อีกครั้งครับ ${appointmentTimeString}`);
-                });
-            }
+        if (time < now) {
+            agent.add(`ไม่สามารถเข้าพบเวลาที่ระบุได้นะครับ กรุณาทำรายการใหม่ตรับ`);
+        } else if (date < now) {
+            agent.add(`ไม่สามารถเข้าพบวันที่ระบุได้นะครับ กรุณาทำรายการใหม่ครับ`);
         }
-        //intentMap 
-        let intentMap = new Map();
-        intentMap.set('contactBooking', createBooking);
-        intentMap.set('contactBooking', createCalendarEvent);
-        agent.handleRequest(intentMap);
-    }
+        else if (bookingDate.getFullYear() > now.getFullYear()) {
+            agent.add(`ไม่สามารถนัดพบเวลา${bookingDate.getFullYear()}ได้ครับ โปรดระบุเวลาอีกครังครับ${now.getFullYear()}`);
+        }
+        else if (phone != 10) {
+            agent.add(`โปรดระบุหมายเลขโทรศัพท์ให้ครบทั้งสิบหลักด้วยครับ`);
+        } else if (stdID != 11) {
+            agent.add(`โปรดระบุรหัสนักศึกษาให้ครบทั้งสิบเอ็ดหลักด้วยครับ`);
+        }
 
-    function createCalendarEvent(time, dateTimeEnd, bookingDate, bookname, studentID, bookphonenumber, bookemail) {
-        return new Promise((resolve, reject) => {
-            calendar.events.list({
-                auth: serviceAccountAuth, // List events for time period
-                calendarId: calendarId,
-                timeMin: time.toISOString(),
-                timeMax: dateTimeEnd.toISOString()
-            }, (err, calendarResponse) => {
-                // Check if there is a event already on the Calendar (use this event to make sure reservations can fit up to 100 guests)
-                if (err || calendarResponse.data.items.length > 0) {
-                    reject(err || new Error('เวลาที่ขอขัดแย้งกับการนัดหมายอื่น โปรดทำรายการใหม่อีกครั้งครับ'));
-                } else {
-                    // Create event for the requested time period
-                    calendar.events.insert({
-                        auth: serviceAccountAuth,
-                        calendarId: calendarId,
-                        resource: {
-                            summary: 'นัดหมายเข้าพบ:' + bookingDate + ', สำหรับ: ', description: bookingDate + ' Name: ' + bookname +
-                                ' รหัสนักศึกษา: ' + studentID + ', PhoneNumber: ' + bookphonenumber + ', Email: ' + bookemail,
-                            start: { dateTime: time },
-                            end: { dateTime: dateTimeEnd },
-                            attendees: { email: email }
-                        }
-                    }
-                    );
-                }
+        else {
+            // Check the availibility of the time, and make an appointment if there is time on the calendar
+            return createCalendarEvent(time, dateTimeEnd, bookingDate, bookname, studentID, bookphonenumber, bookemail).then(() => {
+                agent.add(`การนัดหมายเสร็จสิ้น ขอให้ ${bookname} เข้าพบ ${appointmentTimeString} ที่ห้องกองทุน @ตึก14ชั้น:6A ตามที่นัดหมายไว้ \n`, `หากมีข้อเปลี่ยนแปลงประการใดทางเราจะติดต่อกลับไปนะครับผม`);
+            }).catch(() => {
+                agent.add(`ขออภัยในความไม่สะดวกนะครับ ไม่สามารถทำการนัดหมายได้ โปรดทำรายการใหม่อีกครั้งครับ ${appointmentTimeString}`);
             });
-        });
+        }
     }
-});
+    //intentMap 
+    let intentMap = new Map();
+    intentMap.set('contactBooking', createBooking);
+    intentMap.set('contactBooking', createCalendarEvent);
+    agent.handleRequest(intentMap);
+};
+
+module.exports = () => {
+function createCalendarEvent(time, dateTimeEnd, bookingDate, bookname, studentID, bookphonenumber, bookemail) {
+    return new Promise((resolve, reject) => {
+        calendar.events.list({
+            auth: serviceAccountAuth, // List events for time period
+            calendarId: calendarId,
+            timeMin: time.toISOString(),
+            timeMax: dateTimeEnd.toISOString()
+        }, (err, calendarResponse) => {
+            // Check if there is a event already on the Calendar (use this event to make sure reservations can fit up to 100 guests)
+            if (err || calendarResponse.data.items.length > 0) {
+                reject(err || new Error('เวลาที่ขอขัดแย้งกับการนัดหมายอื่น โปรดทำรายการใหม่อีกครั้งครับ'));
+            } else {
+                // Create event for the requested time period
+                calendar.events.insert({
+                    auth: serviceAccountAuth,
+                    calendarId: calendarId,
+                    resource: {
+                        summary: 'นัดหมายเข้าพบ:' + bookingDate + ', สำหรับ: ', description: bookingDate + ' Name: ' + bookname +
+                            ' รหัสนักศึกษา: ' + studentID + ', PhoneNumber: ' + bookphonenumber + ', Email: ' + bookemail,
+                        start: { dateTime: time },
+                        end: { dateTime: dateTimeEnd },
+                        attendees: { email: email }
+                    }
+                }
+                );
+            }
+        });
+    });
+}
 };
