@@ -1,7 +1,11 @@
 module.exports = (booking) =>  {
-// booking.post('/booking', async (req, res) => {
-// const google = require('../API/ggCalendar');
-var { google } = require("googleapis");
+booking.get('/bb', (req, res) => {
+    res.send('Hello bot "now working on contactBooking"');
+});
+
+booking.post('/booking', async (req, res) => {
+
+    var { google } = require("googleapis");
 
 const calendarId = require('../config/keys');
 const serviceAccount = {
@@ -112,5 +116,5 @@ const timeZoneOffset = '+7:00';
             });
         });
     }
-// });
+});
 };

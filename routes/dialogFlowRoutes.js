@@ -5,7 +5,7 @@ const { express } = require('actions-on-google/dist/framework/express');
 module.exports = (app) => {
   //HTTP Methods
   app.get('/', (req, res) => {
-    res.send('Hello thesis again "now working on 20/7/64 04.40 am"');
+    res.send('Hello thesis again "now working on 20/7/64 9.05 pm"');
   });
 
   //Home route Webhook connection
@@ -38,8 +38,7 @@ module.exports = (app) => {
       case '42b2a223-daa2-4493-a13c-3a61723710ab':
         const booking = express();
         booking.use(bodyParser.json());
-
-        require('../chatbot/contactBooking.js')(booking);
+        require('../chatbot/contactBooking')(booking);
         res.send();
         break;
       //contactBooking-yes
@@ -53,6 +52,9 @@ module.exports = (app) => {
 
       //sendMail
       case '30618794-147e-4f1c-9812-af06b02f674b':
+        const sMail = express();
+        sMail.use(bodyParser.json());
+        require('../chatbot/contactBooking')(sMail);
         res.send();
         break;
       //sendMail-yes
@@ -64,7 +66,6 @@ module.exports = (app) => {
           res.send();
           break;
       
-
       default://test
         res.send({
           fulfillmentText: 'Webhook test => default'
@@ -78,18 +79,6 @@ module.exports = (app) => {
 
   // app.put();
   // app.delete();
-
-  //contactBook
-  // function createBooking(agent) {
-        //   return agent.read('contactBooking.js');
-        // }
-        // function createCalendarEvent(agent) {
-        //   return agent.read('contactBooking.js');
-        // }
-        // let intentMap = new Map();
-        // intentMap.set('contactBooking', createBooking);
-        // intentMap.set('contactBooking', createCalendarEvent);
-        // agent.handleRequest(intentMap);
 
   // //text query
   // app.post('/textQuery', async (req, res) => {
