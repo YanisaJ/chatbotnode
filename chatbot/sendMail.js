@@ -3,12 +3,13 @@ module.exports = (sMail) => {
         res.send('Hello bot "now working on sendMail"');
     });
 
-    sMail.post('/sendMail', async (req, res) => (function sendMail(params) {
+    sMail.post('/sendMail', async (req, res) => (function sendMail(phonenumber,name,email,mailTitle,mailDetail) {
         const phonenumber = agent.parameter.phonenumber;
         const name = agent.parameter.name;
         const email = agent.parameter.email;
         const mailTitle = agent.parameter.mailTitle;
         const mailDetail = agent.parameter.mailDetail;
+        
         require('dotenv').config();
         const nodemailer = require("nodemailer");
 
