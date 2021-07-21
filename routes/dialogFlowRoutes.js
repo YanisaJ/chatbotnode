@@ -44,6 +44,11 @@ module.exports = (app) => {
       case '62e06ac5-9a6a-49df-9214-1867581a2d0d':
         res.send();
         break;
+        
+      //schedule
+      case 'ebb23a9b-3e35-411c-b412-b546bc81dea2':
+        res.send();
+        break;
 
       //contactBooking
       case '42b2a223-daa2-4493-a13c-3a61723710ab':
