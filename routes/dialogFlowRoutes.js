@@ -10,7 +10,7 @@ const { express } = require('actions-on-google/dist/framework/express');
 module.exports = (app) => {
   //HTTP Methods
   app.get('/', (req, res) => {
-    res.send('Hello thesis again "now working on 21/7/64 present day"');
+    res.send('Hello thesis again "now working on 31/7/64"');
   });
 
   //Home route Webhook connection
