@@ -10,7 +10,11 @@ const { express } = require('actions-on-google/dist/framework/express');
 module.exports = (app) => {
   //HTTP Methods
   app.get('/', (req, res) => {
-    res.send('Hello thesis again "now working on 31/7/64"');
+    // res.send('Hello thesis again "now working on 31/7/64"');
+    const booking = express();
+        booking.use(bodyParser.json());
+        require('../chatbot/contactBooking')(booking);
+        res.send();
   });
 
   //Home route Webhook connection

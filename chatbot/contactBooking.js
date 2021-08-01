@@ -35,7 +35,7 @@ const timeZoneOffset = '+7:00';
 const agent = new WebhookClient({ request, response });
 console.log("Parameters", agent.parameters);
 
-module.exports = () => {
+module.exports = (booking) => {
     //Change the parameters to your entity names
     function createBooking(agent) {
         const time = new Date(Date.parse(agent.parameters.date.split('T')[0] + 'T' + agent.parameters.time.split('T')[1].split('-')[0] + timeZoneOffset));
@@ -85,7 +85,7 @@ module.exports = () => {
     agent.handleRequest(intentMap);
 };
 
-module.exports = () => {
+module.exports = (booking) => {
 function createCalendarEvent(time, dateTimeEnd, bookingDate, bookname, studentID, bookphonenumber, bookemail) {
     return new Promise((resolve, reject) => {
         calendar.events.list({
