@@ -29,7 +29,7 @@ module.exports = (app) => {
       //webhook
       case 'a8b806d2-1892-4b96-b73d-a2534d543db1':
         res.send({
-          fulfillmentText: 'Webhook test: connectedex'
+          fulfillmentText: 'Webhook test: connectedexx'
         });
         break;
 
@@ -93,7 +93,7 @@ module.exports = (app) => {
         const booking = express();
         booking.use(bodyParser.json());
         require('../chatbot/contactBooking')(booking);
-        //res.send({
+        res.send({
           fulfillmentText: 'ไม่เข้าค่ะนังโง่!!!!!!!'
         });
       break;  
