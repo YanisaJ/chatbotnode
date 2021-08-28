@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(bodyParser.json());//middleware
+//middleware
+app.use(bodyParser.json());
 //import routes
     require('./routes/dialogFlowRoutes')(app);
 
