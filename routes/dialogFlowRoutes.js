@@ -52,17 +52,11 @@ module.exports = (app) => {
 
       //contactBooking
       case '42b2a223-daa2-4493-a13c-3a61723710ab':
-        const booking = express();
-        booking.use(bodyParser.json());
-        require('../chatbot/contactBooking')(booking);
-        //res.send();
-        break;
-
         // const booking = express();
         // booking.use(bodyParser.json());
         // require('../chatbot/contactBooking')(booking);
-        // res.send();
-        // break;
+        res.send();
+        break;
         
       //contactBooking-yes
       case '6d5ea1b3-a651-4785-81d5-7f8a99268e29':
@@ -93,6 +87,13 @@ module.exports = (app) => {
       //imtDate
       //case '':
       //break;  
+      
+      //testpath
+      case 'a7f0ba63-604b-4087-9485-eb3506d1a700':
+        const booking = express();
+        booking.use(bodyParser.json());
+        res.send(require('../chatbot/contactBooking')(booking));
+      break;  
       //----------------------------------------------------------------------------
 
       default ://welcome

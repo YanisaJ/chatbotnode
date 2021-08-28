@@ -3,7 +3,7 @@ module.exports = (booking) => {
   booking.get('/CB', (req, res) => {
     //res.send('Hello it get from contact booking');
     res.send({
-        fulfillmentText: 'Webhook test: connected'
+        fulfillmentText: 'testpath: connecteddd'
       });
   });
 };
