@@ -10,11 +10,7 @@ const { express } = require('actions-on-google/dist/framework/express');
 module.exports = (app) => {
   //HTTP Methods
   app.get('/', (req, res) => {
-    // res.send('Hello thesis again "now working on 31/7/64"');
-    const booking = express();
-        booking.use(bodyParser.json());
-        require('../chatbot/contactBooking')(booking);
-        res.send();
+    res.send('Hello thesis again "now working on 28/8/64"');
   });
 
   //Home route Webhook connection
@@ -27,7 +23,7 @@ module.exports = (app) => {
       //test
       case '4723c3a7-3944-4f87-98a3-f729ad1860e5':
         res.send({
-          fulfillmentText: 'ABC test: connected 55'
+          fulfillmentText: 'ABC test: connected'
         });
         break;
       //webhook
@@ -58,9 +54,15 @@ module.exports = (app) => {
       case '42b2a223-daa2-4493-a13c-3a61723710ab':
         const booking = express();
         booking.use(bodyParser.json());
-        require('../chatbot/contactBooking')(booking);
-        res.send();
+        res.send(require('../chatbot/contactBooking')(booking));
         break;
+
+        // const booking = express();
+        // booking.use(bodyParser.json());
+        // require('../chatbot/contactBooking')(booking);
+        // res.send();
+        // break;
+        
       //contactBooking-yes
       case '6d5ea1b3-a651-4785-81d5-7f8a99268e29':
         res.send();
@@ -77,6 +79,7 @@ module.exports = (app) => {
         require('../chatbot/contactBooking')(sMail);
         res.send();
         break;
+
       //sendMail-yes
       case '51f862b9-3352-4966-adba-103bac0782d2':
         res.send();
