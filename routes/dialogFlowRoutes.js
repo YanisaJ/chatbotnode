@@ -93,9 +93,12 @@ module.exports = (app) => {
         // const booking = express();
         // booking.use(bodyParser.json());
         // require('../chatbot/contactBooking')(booking);
-        res.send({
-          fulfillmentText: 'ไม่เข้าค่ะนังโง่!!!!!!!'
-        });
+        // res.send({
+        //   fulfillmentText: 'ไม่เข้าค่ะนังโง่!!!!!!!'
+        // });
+        const booking = express();
+        booking.use(bodyParser.json());
+        res.send(require('../chatbot/contactBooking')(booking));
       break;  
       //----------------------------------------------------------------------------
 
