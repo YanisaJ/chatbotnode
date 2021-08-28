@@ -93,16 +93,13 @@ module.exports = (app) => {
       
       //testpath
       case 'a7f0ba63-604b-4087-9485-eb3506d1a700':
-        // const booking = express();
-        // booking.use(bodyParser.json());
-        // require('../chatbot/contactBooking')(booking);
         // res.send({
-        //   fulfillmentText: 'อยู่แค่ส่วน app'
+        //   fulfillmentText: 'อยู่แค่ส่วน app.post'
         // });
         
         const booking = express();
         booking.use(bodyParser.json());
-        res.send.require('../chatbot/contactBooking')(booking);
+        console.log.require('../chatbot/contactBooking')(booking);
       break;  
       //----------------------------------------------------------------------------
 
