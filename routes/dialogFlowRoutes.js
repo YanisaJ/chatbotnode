@@ -90,9 +90,9 @@ module.exports = (app) => {
       
       //testpath
       case 'a7f0ba63-604b-4087-9485-eb3506d1a700':
-        const booking = express();
-        booking.use(bodyParser.json());
-        require('../chatbot/contactBooking')(booking);
+        // const booking = express();
+        // booking.use(bodyParser.json());
+        // require('../chatbot/contactBooking')(booking);
         res.send({
           fulfillmentText: 'ไม่เข้าค่ะนังโง่!!!!!!!'
         });
