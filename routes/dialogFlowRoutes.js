@@ -99,7 +99,9 @@ module.exports = (app) => {
         
         const booking = express();
         booking.use(bodyParser.json());
-        console.log.require('../chatbot/contactBooking')(booking);
+        require('../chatbot/contactBooking');
+        //res.send.require('../chatbot/contactBooking')(booking);
+        console.log.require(booking);
       break;  
       //----------------------------------------------------------------------------
 
