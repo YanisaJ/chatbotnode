@@ -3,8 +3,11 @@ const dialogflow = require('dialogflow');
 const uuid = require('uuid');
 const config = require('../config/keys');
 
-const { express } = require('actions-on-google/dist/framework/express');
+//const { express } = require('actions-on-google/dist/framework/express');
 //const chatbot = require('../chatbot/chatbot');
+
+const express = require('express');
+const bodyParser = require('body-parser');
 
 //----------------------------------------------------------------------------
 module.exports = (app) => {
@@ -96,9 +99,11 @@ module.exports = (app) => {
         // res.send({
         //   fulfillmentText: 'ไม่เข้าค่ะนังโง่!!!!!!!'
         // });
+
         const booking = express();
         booking.use(bodyParser.json());
-        res.send(require('../chatbot/contactBooking')(booking));
+        require('../chatbot/contactBooking')(booking);
+        res.send();
       break;  
       //----------------------------------------------------------------------------
 
