@@ -96,12 +96,12 @@ module.exports = (app) => {
         // res.send({
         //   fulfillmentText: 'อยู่แค่ส่วน app.post'
         // });
+        //res.send.require('../chatbot/contactBooking')(booking);
         
         const booking = express();
         booking.use(bodyParser.json());
         require('../chatbot/contactBooking');
-        //res.send.require('../chatbot/contactBooking')(booking);
-        console.log.require(booking);
+        console.log(booking);
       break;  
       //----------------------------------------------------------------------------
 
