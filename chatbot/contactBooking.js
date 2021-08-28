@@ -1,6 +1,6 @@
 module.exports = (booking) => {
     booking.get('/cb', (req, res) => {
-    res.send('Hello it get from contact booking');
+    res.send('Hello testpath from contactbooking');
   });
 
     booking.post('/', (req, res) => {
