@@ -54,7 +54,8 @@ module.exports = (app) => {
       case '42b2a223-daa2-4493-a13c-3a61723710ab':
         const booking = express();
         booking.use(bodyParser.json());
-        res.send(require('../chatbot/contactBooking')(booking));
+        require('../chatbot/contactBooking')(booking);
+        res.send();
         break;
 
         // const booking = express();
