@@ -55,7 +55,7 @@ module.exports = (app) => {
         const booking = express();
         booking.use(bodyParser.json());
         require('../chatbot/contactBooking')(booking);
-        res.send();
+        //res.send();
         break;
 
         // const booking = express();
