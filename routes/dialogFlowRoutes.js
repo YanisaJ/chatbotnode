@@ -97,7 +97,7 @@ module.exports = (app) => {
         // booking.use(bodyParser.json());
         // require('../chatbot/contactBooking')(booking);
         // res.send({
-        //   fulfillmentText: 'ไม่เข้าค่ะนังโง่!!!!!!!'
+        //   fulfillmentText: 'อยู่แค่ส่วน app'
         // });
         
         const booking = express();
