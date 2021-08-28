@@ -29,7 +29,7 @@ module.exports = (app) => {
       //webhook
       case 'a8b806d2-1892-4b96-b73d-a2534d543db1':
         res.send({
-          fulfillmentText: 'Webhook test: connected'
+          fulfillmentText: 'Webhook test: connectedex'
         });
         break;
 
@@ -69,9 +69,9 @@ module.exports = (app) => {
 
       //sendMail
       case '30618794-147e-4f1c-9812-af06b02f674b':
-        const sMail = express();
-        sMail.use(bodyParser.json());
-        require('../chatbot/contactBooking')(sMail);
+        // const sMail = express();
+        // sMail.use(bodyParser.json());
+        // require('../chatbot/contactBooking')(sMail);
         res.send();
         break;
 
@@ -92,7 +92,8 @@ module.exports = (app) => {
       case 'a7f0ba63-604b-4087-9485-eb3506d1a700':
         const booking = express();
         booking.use(bodyParser.json());
-        res.send(require('../chatbot/contactBooking')(booking));
+        require('../chatbot/contactBooking')(booking);
+        //res.send();
       break;  
       //----------------------------------------------------------------------------
 
