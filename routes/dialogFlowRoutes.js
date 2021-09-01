@@ -94,7 +94,7 @@ module.exports = (app) => {
       //testpath
       case 'a7f0ba63-604b-4087-9485-eb3506d1a700':
         // res.send({
-        //   fulfillmentText: 'อยู่แค่ส่วน app.post'
+        //   fulfillmentText: 'at -> app.post'
         // });
         //res.send.require('../chatbot/contactBooking')(booking);
         
