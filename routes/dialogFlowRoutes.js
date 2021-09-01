@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 module.exports = (app) => {
   //HTTP Methods
   app.get('/', (req, res) => {
-    res.send('Hello thesis again "now working on 28/8/64"');
+    res.send('Hello thesis again "now working on 1/9/64"');
   });
 
   //Home route Webhook connection
