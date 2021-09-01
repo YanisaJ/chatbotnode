@@ -13,6 +13,5 @@ module.exports = (booking) => {
         fulfillmentText: 'testpath: connecteddd'
       }); 
   });
-
-};
 export default(booking);
+};
