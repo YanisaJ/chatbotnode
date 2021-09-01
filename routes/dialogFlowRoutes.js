@@ -102,7 +102,7 @@ module.exports = (app) => {
         
         const booking = express();
         booking.use(bodyParser.json());
-        booking.post('../chatbot/contactBooking');
+        booking.request('../chatbot/contactBooking');
         res.send(booking);
       break;  
       //----------------------------------------------------------------------------
