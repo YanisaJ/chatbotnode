@@ -15,3 +15,4 @@ module.exports = (booking) => {
   });
 export default(booking);
 };
+      
