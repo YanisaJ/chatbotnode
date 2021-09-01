@@ -9,7 +9,7 @@ const { express } = require('actions-on-google/dist/framework/express');
 //const express = require('express');
 const bodyParser = require('body-parser');
 
-import { booking } from "../chatbot/contactBooking";
+//import { booking } from "../chatbot/contactBooking";
 
 //----------------------------------------------------------------------------
 module.exports = (app) => {
@@ -100,9 +100,9 @@ module.exports = (app) => {
         // });
         //res.send.require('../chatbot/contactBooking')(booking);
         
-        // const booking = express();
-        // booking.use(bodyParser.json());
-        // require('../chatbot/contactBooking')(booking);
+        const booking = express();
+        booking.use(bodyParser.json());
+        require('../chatbot/contactBooking')(booking);
         
         res.send(booking);
       break;  
