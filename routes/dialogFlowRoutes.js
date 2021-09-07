@@ -95,10 +95,9 @@ module.exports = (app) => {
       
       //testpath
       case 'a7f0ba63-604b-4087-9485-eb3506d1a700':
-        // res.send({
-        //   fulfillmentText: 'at -> app.post'
-        // });
-        //res.send.require('../chatbot/contactBooking')(booking);
+        res.send({
+          fulfillmentText: 'at -> app.post'
+        });
         
         // const booking = express();
         // booking.use(bodyParser.json());
@@ -108,9 +107,8 @@ module.exports = (app) => {
         //const tp = require('../chatbot/chatbot');
         // tp.aa();
         //res.send(tp.aa());
-        res.send("at -> app.post");
-
-      break;  
+        
+        break;  
       //---------------------------------------------------------------------------
 
       default ://welcome
