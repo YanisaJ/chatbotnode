@@ -34,7 +34,7 @@ module.exports = (app) => {
       //webhook
       case 'a8b806d2-1892-4b96-b73d-a2534d543db1':
         res.send({
-          fulfillmentText: 'Webhook test: connected 7/9'
+          fulfillmentText: 'Webhook test: connected 7/9/64'
         });
         break;
 
@@ -106,7 +106,7 @@ module.exports = (app) => {
         
         const tp = require('../chatbot/chatbot');
         //tp.aa();
-        return res.send(tp.aa());
+        return tp.aa();
         
         break;  
       //---------------------------------------------------------------------------
