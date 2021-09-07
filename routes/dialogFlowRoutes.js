@@ -96,17 +96,17 @@ module.exports = (app) => {
       //testpath
       case 'a7f0ba63-604b-4087-9485-eb3506d1a700':
         // res.send({
-        //   fulfillmentText: '../chatbot/chatbot'
+        //   fulfillmentText: 'stay still at app.post'
         // });
         
         // const booking = express();
         // booking.use(bodyParser.json());
-        // require('../chatbot/contactBooking');
+        // require('../chatbot/chatbot');
         // res.send(booking);
         
         const tp = require('../chatbot/chatbot');
         //tp.aa();
-        return tp.aa();
+        return res.send(tp.aa());
         
         break;  
       //---------------------------------------------------------------------------
