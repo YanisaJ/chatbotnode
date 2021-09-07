@@ -104,19 +104,19 @@ module.exports = (app) => {
         // require('../chatbot/chatbot');
         // res.send(booking);
         
-        const tp = require('../chatbot/chatbot');
-        tp.aa();
-        res.send(tp);
+        // const tp = require('../chatbot/chatbot');
+        // tp.aa();
+        // res.send(tp);
         break;  
       //---------------------------------------------------------------------------
 
       default :
+      res.send();
       break;
     }
-    
-  });
+    });
 
-  app.post('/eventQuery', (req, res) => {
+  app.post('/k', (req, res) => {
     res.send('Event query')
   });
 
