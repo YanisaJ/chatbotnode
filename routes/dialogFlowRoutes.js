@@ -15,7 +15,7 @@ const bodyParser = require('body-parser');
 module.exports = (app) => {
   //HTTP Methods
   app.get('/', (req, res) => {
-    res.send('Hello thesis again "now working on 1/9/64"');
+    res.send('Hello thesis again "now working on 7/9/64"');
   });
 
   //Home route Webhook connection
@@ -100,12 +100,16 @@ module.exports = (app) => {
         // });
         //res.send.require('../chatbot/contactBooking')(booking);
         
-        const booking = express();
-        booking.use(bodyParser.json());
-        require('../chatbot/contactBooking');
-        res.send(booking);
+        // const booking = express();
+        // booking.use(bodyParser.json());
+        // require('../chatbot/contactBooking');
+        // res.send(booking);
+        
+        const tp = require('../chatbot/chatbot');
+        // tp.aa();
+        res.send(tp.aa());
       break;  
-      //----------------------------------------------------------------------------
+      //---------------------------------------------------------------------------
 
       default ://welcome
       const sessionId = uuid.v4();

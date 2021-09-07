@@ -1,38 +1,9 @@
-//Using DialogFlow------------------------------------------------- 
-// 'use strict';
-// const dialogflow = require('dialogflow');
-// const uuid = require('uuid');
-// const config = require('../config/keys');
+//contactBooking
+const aa = function() {
+  //console.log("hello from chatbot function aa");
+  res.send({
+    fulfillmentText: 'hello from chatbot function aa'
+  });
+};
 
-// // A unique identifier for the given session
-// const sessionId = uuid.v4();
-// // new session
-// const sessionClient = new dialogflow.SessionsClient();
-// const sessionPath = sessionClient.sessionPath(config.projectId, sessionId);
-
-// 
-//
-//     textQuery: async function (text, parameters) {
-//         // The text query request
-//         const request = {
-//             session: sessionPath,
-//             queryInput: {
-//                 text: {
-//                     // The query to send to the dialogflow agent ข้อความที่ client ขอไปยัง bodyparser
-//                     text: text,
-//                     // ภาษาที่ใช้
-//                     languageCode: config.languageCode,
-//                 },
-//             },
-//             queryParams: {
-//                 payload: {
-//                     data: parameters
-//                 }
-//             },
-//         };
-//         // detectIntent จะดูว่าเรา requeset อะไร แล้วจะตอบกลับมาตามเงื่อนไข intent นั้น
-//         let responses = await sessionClient.detectIntent(request);
-//         return responses;
-//     },
-   
-// };
+module.exports= {aa};
