@@ -105,48 +105,15 @@ module.exports = (app) => {
         // res.send(booking);
         
         const tp = require('../chatbot/chatbot');
-        //tp.aa();
-        return res.send(tp.aa());
-        
+        tp.aa();
+        res.send(tp);
         break;  
       //---------------------------------------------------------------------------
 
-      default ://welcome
-      const sessionId = uuid.v4();
-      // new session
-      const sessionClient = new dialogflow.SessionsClient();
-      const sessionPath = sessionClient.sessionPath(config.projectId, sessionId);
-
-      // The text query request
-      const request = {
-        session: sessionPath,
-        queryInput: {
-          text: {
-            // The query to send to the dialogflow agent ข้อความที่ client ขอไปยัง bodyparser
-            text: text,
-            // ภาษาที่ใช้
-            languageCode: config.languageCode,
-          },
-        },
-        queryParams: {
-          payload: {
-            data: parameters
-          }
-        },
-      };
-      // detectIntent จะดูว่าเรา requeset อะไร แล้วจะตอบกลับมาตามเงื่อนไข intent นั้น
-      const responses = await sessionClient.detectIntent(request);
-      console.log('Detected intent');
-      const result = responses[0].queryResult;
-      console.log(`  Query: ${result.queryText}`);
-      console.log(`  Response: ${result.fulfillmentText}`);
-      if (result.intent) {
-        console.log(`  Intent: ${result.intent.displayName}`);
-      } else {
-        console.log(`  No intent matched.`);
-      }
-    // }res.send(respondses[0].queryResult);
-    }res.send();
+      default :
+      break;
+    }
+    
   });
 
   app.post('/eventQuery', (req, res) => {
