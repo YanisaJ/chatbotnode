@@ -108,6 +108,8 @@ module.exports = (app) => {
         const tp = require('../chatbot/chatbot');
         // tp.aa();
         res.send(tp.aa());
+        res.send("at -> app.post");
+
       break;  
       //---------------------------------------------------------------------------
 
