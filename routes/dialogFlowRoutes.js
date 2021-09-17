@@ -116,7 +116,7 @@ module.exports = (app) => {
     }
     });
 
-  app.post('/k', (req, res) => {
+  app.post('/', (req, res) => {
     res.send('Event query')
   });
 
